@@ -1,0 +1,1 @@
+AngularJs + Spring project
