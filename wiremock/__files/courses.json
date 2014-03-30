@@ -1,0 +1,10 @@
+{
+  "courses":[
+      {"title":"Introduccion a JSF2", "level":"Intermedio","hours":"25"},
+      {"title":"Novedades en Spring 3", "level":"Básico","hours":"10"},
+      {"title":"Java 01", "level":"Intermedio","hours":"25"},
+      {"title":"Java 02", "level":"básico","hours":"15"},
+      {"title":"Java 11", "level":"Intermedio","hours":"25"},
+      {"title":"Java 12", "level":"básico","hours":"15"}
+    ]
+}

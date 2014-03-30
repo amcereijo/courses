@@ -1,0 +1,1 @@
+java -jar wiremock-1.45-standalone.jar --port 9999
