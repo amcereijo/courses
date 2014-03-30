@@ -1,9 +1,17 @@
+<style type="text/css">
+.even {
+    background: #fcf8e3;
+}
+.trHeader{
+	background: #ccc;
+}
+</style>
 <div ng-controller="CourseListController">
-	<p>Catalogo de cursos</p>
+	<h3>Catalogo de cursos</h3>
 	<div class="table-responsive">
 		<table class="table table-hover table-bordered">
 		  <thead>
-		    <tr>
+		    <tr class="trHeader">
 		      <th ng-click="setOrder('title')">Título {{ orderProperty=='title' | showOrderBy:orderbyASC}}</th>
 		      <th ng-click="setOrder('level')">Nivel {{ orderProperty=='level' | showOrderBy:orderbyASC}}</th>
 		      <th ng-click="setOrder('hours')">Horas {{ orderProperty=='hours' | showOrderBy:orderbyASC}}</th>
@@ -11,7 +19,7 @@
 		  </thead>
 		  <tbody>
 		    <tr ng-repeat="course in courses|orderBy:orderProperty:orderbyASC | 
-		     startFrom:currentPage*pageSize | limitTo:pageSize">
+		     startFrom:currentPage*pageSize | limitTo:pageSize"  ng-class-even="'even'" ng-class-odd="odd">
 		      <td>{{course.title}}</td>
 		      <td>{{course.level}}</td>
 		      <td>{{course.hours}}</td>
@@ -24,4 +32,8 @@
 	    
 	    <button ng-disabled="currentPage >= data.length/pageSize - 1" ng-click="currentPage=currentPage+1">Siguiente</button>
 	</div>
+	<p/>
+	<h3>
+		<a class="btn btn-default" href="#/coursenew" role="button">Nuevo Curso</a>
+	</h3>
 </div>
