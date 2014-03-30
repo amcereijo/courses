@@ -1,7 +1,7 @@
 {
   "request": {
     "method": "GET",
-    "url": "/api/courses"
+    "url": "/api/courses/authors"
   },
   "response": {
     "status": 200,
@@ -11,6 +11,6 @@
       "Access-Control-Allow-Headers":  "Origin, X-Requested-With, Content-Type, Accept",
       "Content-Type": "application/json"
     },
-    "bodyFileName": "/courses.json"
+    "bodyFileName": "/courses-authors.json"
   }
 }

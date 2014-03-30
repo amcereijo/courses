@@ -1,14 +1,14 @@
 {
   "request": {
     "method": "POST",
-    "url": "/api/course"
+    "url": "/api/courses"
   },
   "response": {
     "status": 201,
     "headers": {
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE",
-      "Access-Control-Allow-Headers":  "Origin, X-Requested-With, Content-Type, Accept, iv-user",
+      "Access-Control-Allow-Headers":  "Origin, X-Requested-With, Content-Type, Accept",
       "Content-Type": "application/json"
     }
   }
