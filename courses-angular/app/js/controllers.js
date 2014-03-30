@@ -12,12 +12,12 @@ angular.module('courses.controllers', [])
     
     $scope.courses = [{}];
     $http({method: 'GET', isArray: true, url: 'http://localhost:9999/api/courses'}).
-    success(function(data, status, headers, config) {
-      $scope.courses = data.courses; 
-    }).
-    error(function(data, status, headers, config) {
-      alert('error:'+data);
-    });
+      success(function(data, status, headers, config) {
+        $scope.courses = data.courses; 
+      }).
+      error(function(data, status, headers, config) {
+        alert('error:'+data);
+      });
 
   	$scope.numberOfPages=function(){
         return Math.ceil($scope.courses.length/$scope.pageSize);                
@@ -31,23 +31,45 @@ angular.module('courses.controllers', [])
     	}
     }
   }])
-  .controller('CourseNewController', function($scope, $location) {
-    $scope.teachers = [
-      {name:'teacher1',id:'1'},
-      {name:'teacher2',id:'2'},
-      {name:'teacher3',id:'3'}
-    ];
-    $scope.levels = [
-      {name:'LevelOne',id:'1'},
-      {name:'LevelTwo',id:'2'},
-      {name:'LevelThree',id:'3'}
-    ];
+  .controller('CourseNewController', function($scope, $location, $http) {
     $scope.course={};
-    $scope.course.teacher = $scope.teachers[0]; 
-    $scope.course.level = $scope.levels[0]; 
+
+    $scope.teachers = [{}];
+    $http({method: 'GET', isArray: true, url: 'http://localhost:9999/api/courses/authors'}).
+      success(function(data, status, headers, config) {
+        $scope.teachers = data.teachers; 
+        $scope.course.teacher = $scope.teachers[0]; 
+      }).
+      error(function(data, status, headers, config) {
+        alert('error:'+data);
+      });
+
+    $scope.levels = [{}];
+    $http({method: 'GET', isArray: true, url: 'http://localhost:9999/api/courses/levels'}).
+      success(function(data, status, headers, config) {
+        $scope.levels = data.levels; 
+        $scope.course.level = $scope.levels[0]; 
+      }).
+      error(function(data, status, headers, config) {
+        alert('error:'+data);
+      });
+    
+
     $scope.master={};
     $scope.newCourse=function(course){
       $scope.master = angular.copy(course);
-      $location.path("/courselist");
+
+      $http({method: 'POST', url: 'http://localhost:9999/api/courses', data:course}).
+        success(function(data, status, headers, config) {
+          if(status === 201){
+            $location.path("/courselist");
+          }
+        }).
+        error(function(data, status, headers, config) {
+          // called asynchronously if an error occurs
+          // or server returns response with an error status.
+        });
+
+      
     };
   });
