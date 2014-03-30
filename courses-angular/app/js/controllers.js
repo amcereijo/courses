@@ -10,27 +10,14 @@ angular.module('courses.controllers', [])
   	$scope.currentPage = 0;
     $scope.pageSize = 3;
     
-    $scope.courses = {};
+    $scope.courses = [{}];
     $http({method: 'GET', isArray: true, url: 'http://localhost:9999/api/courses'}).
     success(function(data, status, headers, config) {
-      alert(data.courses);
       $scope.courses = data.courses; 
     }).
     error(function(data, status, headers, config) {
       alert('error:'+data);
     });
-
-
-    
-    //$scope.courses = CourseList.query();
-  	/*$scope.courses = [
-	  	{'title':'Introducción a JSF2', 'level':'Intermedio','hours':'25'},
-	  	{'title':'Novedades en Spring 3', 'level':'Básico','hours':'10'},
-	  	{'title':'Java 01', 'level':'Intermedio','hours':'25'},
-	  	{'title':'Java 02', 'level':'básico','hours':'15'},
-	  	{'title':'Java 11', 'level':'Intermedio','hours':'25'},
-	  	{'title':'Java 12', 'level':'básico','hours':'15'}
-  	];*/
 
   	$scope.numberOfPages=function(){
         return Math.ceil($scope.courses.length/$scope.pageSize);                
