@@ -1,5 +1,43 @@
-<p>This is the partial for CourseNew.</p>
-<p>
-  Showing of 'interpolate' filter:
-  {{ 'Current version is v%VERSION%.' | interpolate }}
-</p>
+<div ng-controller="CourseNewController">
+	<form  novalidate class="simple-form" >
+		<div class="container-fluid">
+			<h3>Añadir curso</h3>
+			
+			<div class="row">
+			  <div class="col-md-1">Activo</div>
+			  <div class="col-md-1"><input type="checkbox" ng-model="course.active"></div>
+			</div>
+			<br/>
+			<div class="row">
+			  <div class="col-md-1">Profesor</div>
+			  <div class="col-md-1">
+			  	<select ng-model="course.teacher" ng-options="t.name for t in teachers"></select>
+			  </div>
+			</div>
+			<br/>
+			<div class="row">
+			  <div class="col-md-1">Título</div>
+			  <div class="col-md-1"><input type="text"  ng-model="course.title" placeholder="titulo del curso" /></div>
+			</div>
+			<br/>
+			<div class="row">
+			  <div class="col-md-1">Nivel</div>
+			  <div class="col-md-1">
+			  	<select ng-model="course.level" ng-options="l.name for l in levels"></select>
+			  </div>
+			</div>
+			<br/>
+			<div class="row">
+			  <div class="col-md-1">Horas</div>
+			  <div class="col-md-1">
+			  	<input type="number" ng-model="course.hours" value= "1" step="1" min="1" max="400"/>
+			  </div>
+			</div>
+		</div>
+		<p/>
+		<button ng-click="newCourse(course)" class="btn btn-default">Añadir</button>
+	</form>
+
+	<pre>form = {{course | json}}</pre>
+  	<pre>master = {{master | json}}</pre>
+</div>

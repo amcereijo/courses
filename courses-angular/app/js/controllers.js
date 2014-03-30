@@ -28,6 +28,23 @@ angular.module('courses.controllers', [])
     	}
     }
   })
-  .controller('CourseNewController', [function() {
-
-  }]);
+  .controller('CourseNewController', function($scope, $location) {
+    $scope.teachers = [
+      {name:'teacher1',id:'1'},
+      {name:'teacher2',id:'2'},
+      {name:'teacher3',id:'3'}
+    ];
+    $scope.levels = [
+      {name:'LevelOne',id:'1'},
+      {name:'LevelTwo',id:'2'},
+      {name:'LevelThree',id:'3'}
+    ];
+    $scope.course={};
+    $scope.course.teacher = $scope.teachers[0]; 
+    $scope.course.level = $scope.levels[0]; 
+    $scope.master={};
+    $scope.newCourse=function(course){
+      $scope.master = angular.copy(course);
+      $location.path("/courselist");
+    };
+  });
