@@ -8,14 +8,14 @@ public class Course implements Serializable{
 	
 	private Long id;
 	private String title;
-	private String level;
+	private Level level;
 	private int hours;
 	private boolean active;
-	
 	private Teacher teacher;
 	
-	public void setId(Long id) {
+	public Course setId(Long id) {
 		this.id = id;
+		return this;
 	}
 	public Long getId() {
 		return id;
@@ -23,26 +23,43 @@ public class Course implements Serializable{
 	public String getTitle() {
 		return title;
 	}
-	public void setTitle(String title) {
+	public Course setTitle(String title) {
 		this.title = title;
+		return this;
 	}
-	public String getLevel() {
+	public Level getLevel() {
 		return level;
 	}
-	public void setLevel(String level) {
+	public Course setLevel(Level level) {
 		this.level = level;
+		return this;
 	}
 	public int getHours() {
 		return hours;
 	}
-	public void setHours(int hours) {
+	public Course setHours(int hours) {
 		this.hours = hours;
+		return this;
 	}
 	public boolean isActive() {
 		return active;
 	}
-	public void setActive(boolean active) {
+	public Course setActive(boolean active) {
 		this.active = active;
+		return this;
+	}
+	public Course setTeacher(Teacher teacher) {
+		this.teacher = teacher;
+		return this;
+	}
+	public Teacher getTeacher() {
+		return teacher;
+	}
+	@Override
+	public String toString() {
+		return "Course [id=" + id + ", title=" + title + ", level=" + level
+				+ ", hours=" + hours + ", active=" + active + ", teacher="
+				+ teacher + "]";
 	}
 	
 	

@@ -2,9 +2,9 @@ package com.angel.courses.domain;
 
 import java.io.Serializable;
 
-public class Teacher implements Serializable{
+public class Level implements Serializable{
 
-	private static final long serialVersionUID = -471251896665690711L;
+	private static final long serialVersionUID = -6059520837153174476L;
 	
 	private Long id;
 	private String name;
@@ -12,20 +12,20 @@ public class Teacher implements Serializable{
 	public Long getId() {
 		return id;
 	}
-	public Teacher setId(Long id) {
+	public Level setId(Long id) {
 		this.id = id;
 		return this;
 	}
 	public String getName() {
 		return name;
 	}
-	public Teacher setName(String name) {
+	public Level setName(String name) {
 		this.name = name;
 		return this;
 	}
 	@Override
 	public String toString() {
-		return "Teacher [id=" + id + ", name=" + name + "]";
+		return "Level [id=" + id + ", name=" + name + "]";
 	}
 	
 	
