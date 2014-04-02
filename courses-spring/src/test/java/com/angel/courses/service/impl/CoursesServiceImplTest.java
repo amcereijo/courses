@@ -17,7 +17,7 @@ import com.angel.courses.repository.CourseRepository;
 import com.google.common.collect.Lists;
 
 
-public class CoursesServiceTest {
+public class CoursesServiceImplTest {
 	
 	private CoursesServiceImpl coursesService;
 	@Mock
