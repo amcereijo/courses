@@ -1,7 +1,5 @@
-{
-  "levels":[
-      {"name":"Level One","id":"1"},
-      {"name":"Level Two","id":"2"},
-      {"name":"Level Three","id":"3"}
-    ]
-}
+[
+	{"id":1,"name":"Básico"},
+	{"id":2,"name":"Intermedio"},
+	{"id":3,"name":"Avanzado"}
+]
