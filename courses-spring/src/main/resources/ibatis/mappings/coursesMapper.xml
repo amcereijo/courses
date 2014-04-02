@@ -3,18 +3,37 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace='com.angel.courses.repository.CourseRepository'>
 
- <resultMap type='Course' id='CourseResult'>
-    <id property='id' column='id'/>
-    <result property='title' column='title'/>
-    <result property='level' column='level'/>
-    <result property='hours' column='hours'/>
-    <result property='active' column='ative'/>
-   </resultMap>
+	<resultMap type='Level' id='LevelResult'>
+		<id property='id' column='id' />
+		<result property='name' column='name' />
+	</resultMap>
 
+	<resultMap type='Teacher' id='TeacherResult'>
+		<id property='id' column='id' />
+		<result property='name' column='name' />
+	</resultMap>
 
-  <select id='getCourseById' parameterType='long' resultMap='CourseResult'>
-     SELECT * from courses
-     WHERE id=#{id}
-  </select>
+	<resultMap type='Course' id='CourseResult'>
+		<id property='id' column='id' />
+		<result property='title' column='title' />
+		<result property='hours' column='hours' />
+		<result property='active' column='ative' />
+		<association property='level' column="id_level" resultMap='LevelResult' />
+		<association property='teacher' column="id_teacher" resultMap='TeacherResult' />
+	</resultMap>
+
+	<select id='getCourseById' parameterType='long' resultMap='CourseResult'>
+		SELECT c.*, l.*,t.* from courses c , levels l, teachers t
+		WHERE c.id=#{id}
+	</select>
+	
+	<select id='getAll' resultMap='CourseResult'>
+		SELECT c.*, l.*,t.* from courses c , levels l, teachers t
+	</select>
+	
+	<insert id="insert" parameterType="Course">
+	    insert into courses (title, hours, active, id_level,id_teacher) values 
+	    (#{title},#{hours},#{active},#{level.id},#{teacher.id})
+	</insert>
 
 </mapper>
