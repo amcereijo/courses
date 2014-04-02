@@ -35,9 +35,16 @@ public class CourseRepositoryTest {
 	
 	
 	@Test
-	public void test(){
+	public void testGetAll(){
 		List<Course> courses = courseRepository.getAll();
 		Assert.assertTrue(courses.size() == 3);
+		System.out.println("Test");
+	}
+	
+	@Test
+	public void testGetCourseById(){
+		Course course = courseRepository.getCourseById(1L);
+		Assert.assertNotNull(course);
 		System.out.println("Test");
 	}
 	
