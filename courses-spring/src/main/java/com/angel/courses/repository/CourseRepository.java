@@ -14,5 +14,5 @@ public interface CourseRepository {
 	
 	Long insert(Course course);
 	
-	List<Course> getAllActive();
+	List<Course> getAllActive(@Param("active") Boolean active);
 }

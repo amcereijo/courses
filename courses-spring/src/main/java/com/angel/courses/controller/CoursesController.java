@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,10 +27,12 @@ public class CoursesController {
 	
 	@ResponseStatus(value=HttpStatus.OK)
 	@RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<Course> get(){
-		List<Course> courses = coursesService.findAllCourses();
-		
-		return courses;
+	public List<Course> get(@RequestParam(value="active", required=false) Boolean active){
+		if(active == null){
+			return coursesService.findAllCourses();
+		}else {
+			return coursesService.findAllActiveCourses(active);
+		}
 	}
 	
 	

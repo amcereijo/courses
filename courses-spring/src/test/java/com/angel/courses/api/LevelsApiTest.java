@@ -14,7 +14,7 @@ import org.springframework.test.context.support.DependencyInjectionTestExecution
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.angel.courses.Application;
-import com.angel.courses.config.DatabaseConfiguration;
+import com.angel.courses.config.DatabaseTestConfiguration;
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
 import com.github.springtestdbunit.annotation.DatabaseOperation;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
@@ -23,7 +23,7 @@ import com.github.springtestdbunit.annotation.DatabaseTearDown;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration(classes = {Application.class, DatabaseConfiguration.class})
+@ContextConfiguration(classes = {Application.class, DatabaseTestConfiguration.class})
 @TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, 
 	DbUnitTestExecutionListener.class })
 @DatabaseSetup("/data/levelsData.xml")

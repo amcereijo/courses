@@ -11,7 +11,7 @@ import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 
-import com.angel.courses.config.DatabaseConfiguration;
+import com.angel.courses.config.DatabaseTestConfiguration;
 import com.angel.courses.domain.Course;
 import com.angel.courses.domain.Level;
 import com.angel.courses.domain.Teacher;
@@ -22,7 +22,7 @@ import com.github.springtestdbunit.annotation.DatabaseTearDown;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {DatabaseConfiguration.class})
+@ContextConfiguration(classes = {DatabaseTestConfiguration.class})
 @TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, 
 	DbUnitTestExecutionListener.class })
 
@@ -42,9 +42,16 @@ public class CourseRepositoryTest {
 	
 	@Test
 	public void testGetAllActive(){
-		List<Course> courses = courseRepository.getAllActive();
+		List<Course> courses = courseRepository.getAllActive(Boolean.TRUE);
 		Assert.assertTrue(courses.size() == 2);
 	}
+	
+	@Test
+	public void testGetAllDeActive(){
+		List<Course> courses = courseRepository.getAllActive(Boolean.FALSE);
+		Assert.assertTrue(courses.size() == 1);
+	}
+	
 	
 	@Test
 	public void testGetCourseById(){

@@ -17,7 +17,12 @@ public class CoursesServiceImpl implements CoursesService {
 	
 	@Override
 	public List<Course> findAllCourses() {
-		List<Course> courses = repository.getAll();
+		return repository.getAll();
+	}
+	
+	@Override
+	public List<Course> findAllActiveCourses(boolean active) {
+		List<Course> courses = repository.getAllActive(active);
 		return courses;
 	}
 

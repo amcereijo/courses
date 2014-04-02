@@ -6,6 +6,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
-@PropertySource(value = "classpath:config/database.properties")
-public class DatabaseConfiguration extends DatabaseConfigurationBase{
+@PropertySource(value = "classpath:config/databaseTest.properties")
+public class DatabaseTestConfiguration extends DatabaseConfigurationBase{
 }

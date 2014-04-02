@@ -40,12 +40,43 @@ public class CoursesControllerTest {
 				);
 		Mockito.when(service.findAllCourses()).thenReturn(courses);
 		
-		List<Course> courseGet = controller.get();
+		List<Course> courseGet = controller.get(null);
 		Assert.assertNotNull(courseGet);
 		Assert.assertTrue(courseGet.size() == 2);
 		
 		Mockito.verify(service, Mockito.times(1)).findAllCourses();
 	}
+	
+	@Test
+	public void testGetActive(){
+		List<Course> courses = Lists.newArrayList(
+				new Course().setId(1L),
+				new Course().setId(2L)
+				);
+		Mockito.when(service.findAllActiveCourses(Boolean.TRUE)).thenReturn(courses);
+		
+		List<Course> courseGet = controller.get(Boolean.TRUE);
+		Assert.assertNotNull(courseGet);
+		Assert.assertTrue(courseGet.size() == 2);
+		
+		Mockito.verify(service, Mockito.times(1)).findAllActiveCourses(Boolean.TRUE);
+	}
+	
+	@Test
+	public void testGetDeActive(){
+		List<Course> courses = Lists.newArrayList(
+				new Course().setId(1L),
+				new Course().setId(2L)
+				);
+		Mockito.when(service.findAllActiveCourses(Boolean.FALSE)).thenReturn(courses);
+		
+		List<Course> courseGet = controller.get(Boolean.FALSE);
+		Assert.assertNotNull(courseGet);
+		Assert.assertTrue(courseGet.size() == 2);
+		
+		Mockito.verify(service, Mockito.times(1)).findAllActiveCourses(Boolean.FALSE);
+	}
+	
 	
 	@Test
 	public void create(){

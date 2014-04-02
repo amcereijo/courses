@@ -32,9 +32,9 @@
 		WHERE c.id_level = l.id and c.id_teacher=t.id
 	</select>
 	
-	<select id="getAllActive" resultMap="CourseResult">
+	<select id="getAllActive" parameterType="Boolean" resultMap="CourseResult">
 		SELECT c.*, l.*,t.* from courses c , levels l, teachers t
-		WHERE c.active = true and c.id_level = l.id and c.id_teacher=t.id
+		WHERE c.active = #{active} and c.id_level = l.id and c.id_teacher=t.id
 	</select>
 	
 	<insert id="insert" parameterType="Course">

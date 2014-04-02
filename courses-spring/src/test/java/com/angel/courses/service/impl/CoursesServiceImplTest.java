@@ -46,6 +46,36 @@ public class CoursesServiceImplTest {
 	}
 	
 	@Test
+	public void testFindAllCoursesActive(){
+		List<Course> courses = Lists.newArrayList(
+				new Course().setId(1L),
+				new Course().setId(2L));
+		Mockito.when(repository.getAllActive(Boolean.TRUE)).thenReturn(courses);
+		
+		List<Course> coursesFind = coursesService.findAllActiveCourses(Boolean.TRUE);
+		
+		Assert.assertNotNull(coursesFind);
+		Assert.assertTrue(coursesFind.size() == 2);
+		
+		Mockito.verify(repository, Mockito.times(1)).getAllActive(Boolean.TRUE);
+	}
+	
+	@Test
+	public void testFindAllCoursesDeActive(){
+		List<Course> courses = Lists.newArrayList(
+				new Course().setId(1L),
+				new Course().setId(2L));
+		Mockito.when(repository.getAllActive(Boolean.FALSE)).thenReturn(courses);
+		
+		List<Course> coursesFind = coursesService.findAllActiveCourses(Boolean.FALSE);
+		
+		Assert.assertNotNull(coursesFind);
+		Assert.assertTrue(coursesFind.size() == 2);
+		
+		Mockito.verify(repository, Mockito.times(1)).getAllActive(Boolean.FALSE);
+	}
+	
+	@Test
 	public void testCreateNewCourse(){
 		Long id = 1L;
 		Mockito.when(repository.insert(Mockito.any(Course.class))).thenReturn(id);
