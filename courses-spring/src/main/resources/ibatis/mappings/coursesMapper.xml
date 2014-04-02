@@ -1,34 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace='com.angel.courses.repository.CourseRepository'>
+<mapper namespace="com.angel.courses.repository.CourseRepository">
 
-	<resultMap type='Level' id='LevelResult'>
-		<id property='id' column='id' />
-		<result property='name' column='name' />
+	<resultMap type="Level" id="LevelResult">
+		<id property="id" column="id" />
+		<result property="name" column="name" />
 	</resultMap>
 
-	<resultMap type='Teacher' id='TeacherResult'>
-		<id property='id' column='id' />
-		<result property='name' column='name' />
+	<resultMap type="Teacher" id="TeacherResult">
+		<id property="id" column="id" />
+		<result property="name" column="name" />
 	</resultMap>
 
-	<resultMap type='Course' id='CourseResult'>
-		<id property='id' column='id' />
-		<result property='title' column='title' />
-		<result property='hours' column='hours' />
-		<result property='active' column='ative' />
-		<association property='level' column="id_level" resultMap='LevelResult' />
-		<association property='teacher' column="id_teacher" resultMap='TeacherResult' />
+	<resultMap type="Course" id="CourseResult">
+		<id property="id" column="id" />
+		<result property="title" column="title" />
+		<result property="hours" column="hours" />
+		<result property="active" column="ative" />
+		<association property="level" column="id_level" resultMap="LevelResult" />
+		<association property="teacher" column="id_teacher" resultMap="TeacherResult" />
 	</resultMap>
 
-	<select id='getCourseById' parameterType='long' resultMap='CourseResult'>
+	<select id="getCourseById" parameterType="long" resultMap="CourseResult">
 		SELECT c.*, l.*,t.* from courses c , levels l, teachers t
 		WHERE c.id=#{id}
 	</select>
 	
-	<select id='getAll' resultMap='CourseResult'>
+	<select id="getAll" resultMap="CourseResult">
 		SELECT c.*, l.*,t.* from courses c , levels l, teachers t
+	</select>
+	
+	<select id="getAllActive" resultMap="CourseResult">
+		SELECT c.*, l.*,t.* from courses c , levels l, teachers t
+		WHERE c.active = true
 	</select>
 	
 	<insert id="insert" parameterType="Course">

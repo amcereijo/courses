@@ -10,7 +10,7 @@ public class Course implements Serializable{
 	private String title;
 	private Level level;
 	private int hours;
-	private boolean active;
+	private boolean active; //1-true, 0-false
 	private Teacher teacher;
 	
 	public Course setId(Long id) {

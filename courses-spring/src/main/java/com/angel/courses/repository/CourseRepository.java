@@ -13,4 +13,6 @@ public interface CourseRepository {
 	List<Course> getAll();
 	
 	Long insert(Course course);
+	
+	List<Course> getAllActive();
 }
