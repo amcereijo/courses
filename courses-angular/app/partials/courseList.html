@@ -18,7 +18,7 @@
 		    <tr ng-repeat="course in courses|orderBy:orderProperty:orderbyASC | 
 		     startFrom:currentPage*pageSize | limitTo:pageSize"  ng-class-even="'warning'" ng-class-odd="odd">
 		      <td>{{course.title}}</td>
-		      <td>{{course.level}}</td>
+		      <td>{{course.level.name}}</td>
 		      <td>{{course.hours}}</td>
 		    </tr>
 		  </tbody>
