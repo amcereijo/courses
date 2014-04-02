@@ -20,6 +20,8 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.angel.courses.repository.CourseRepository;
+import com.angel.courses.repository.LevelRespository;
+import com.angel.courses.repository.TeacherRepository;
 
 @Configuration
 @EnableTransactionManagement
@@ -72,4 +74,21 @@ public class DatabaseConfiguration implements EnvironmentAware {
 		return mapperFactoryBean;
 	}
 	
+	@Bean
+	public MapperFactoryBean<LevelRespository> getLevelRespositoryMapper(SqlSessionFactory sqlSessionFactory){
+		MapperFactoryBean<LevelRespository> mapperFactoryBean = new MapperFactoryBean<LevelRespository>();
+		mapperFactoryBean.setMapperInterface(LevelRespository.class);
+		mapperFactoryBean.setSqlSessionFactory(sqlSessionFactory);
+		LOG.info("LevelRespositoryMapper created....");
+		return mapperFactoryBean;
+	}
+	
+	@Bean
+	public MapperFactoryBean<TeacherRepository> getTeacherRepositoryMapper(SqlSessionFactory sqlSessionFactory){
+		MapperFactoryBean<TeacherRepository> mapperFactoryBean = new MapperFactoryBean<TeacherRepository>();
+		mapperFactoryBean.setMapperInterface(TeacherRepository.class);
+		mapperFactoryBean.setSqlSessionFactory(sqlSessionFactory);
+		LOG.info("TeacherRepositoryMapper created....");
+		return mapperFactoryBean;
+	}
 }
