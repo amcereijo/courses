@@ -24,16 +24,17 @@
 
 	<select id="getCourseById" parameterType="long" resultMap="CourseResult">
 		SELECT c.*, l.*,t.* from courses c , levels l, teachers t
-		WHERE c.id=#{id}
+		WHERE c.id=#{id} and c.id_level = l.id and c.id_teacher=t.id
 	</select>
 	
 	<select id="getAll" resultMap="CourseResult">
 		SELECT c.*, l.*,t.* from courses c , levels l, teachers t
+		WHERE c.id_level = l.id and c.id_teacher=t.id
 	</select>
 	
 	<select id="getAllActive" resultMap="CourseResult">
 		SELECT c.*, l.*,t.* from courses c , levels l, teachers t
-		WHERE c.active = true
+		WHERE c.active = true and c.id_level = l.id and c.id_teacher=t.id
 	</select>
 	
 	<insert id="insert" parameterType="Course">
