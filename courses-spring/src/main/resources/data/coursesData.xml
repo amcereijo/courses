@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <teachers id="1" name="Angel"/>
+    <teachers id="2" name="Steve Jobs"/>
+    <teachers id="3" name="Bruce Willies"/>
+    
+    <levels id="1" name="Básico"/>
+    <levels id="2" name="Intermedio"/>
+    <levels id="3" name="Avanzado"/>
+    
+    <courses id="1" title="My first course" id_level="1" hours="10" active="0" id_teacher="1"/>
+    <courses id="2" title="Never ending course" id_level="2" hours="25" active="0" id_teacher="1"/>
+    <courses id="3" title="Expert course" id_level="3" hours="100" active="0" id_teacher="3"/>
+</dataset>
