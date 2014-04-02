@@ -5,19 +5,14 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 import org.springframework.test.context.web.WebAppConfiguration;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.context.WebApplicationContext;
 
 import com.angel.courses.Application;
 import com.angel.courses.config.DatabaseConfiguration;
@@ -34,16 +29,7 @@ import com.github.springtestdbunit.annotation.DatabaseTearDown;
 	DbUnitTestExecutionListener.class })
 @DatabaseSetup("/data/coursesData.xml")
 @DatabaseTearDown(type=DatabaseOperation.DELETE_ALL, value="/data/coursesData.xml")
-public class CoursesApiTest {
-
-	@Autowired
-	protected WebApplicationContext webApplicationContext; 
-	protected MockMvc mockMvc;
-	
-	@Before
-	public void setUp(){
-		this.mockMvc = MockMvcBuilders.webAppContextSetup(this.webApplicationContext).build();
-	}
+public class CoursesApiTest extends BaseApitTest{
 
 	@Test
 	public void testGet() throws Exception{
