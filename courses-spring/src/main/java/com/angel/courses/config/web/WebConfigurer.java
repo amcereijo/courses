@@ -20,7 +20,6 @@ import org.springframework.core.env.Environment;
 import com.angel.courses.config.filter.CrossOriginFilter;
 
 @Configuration
-//@EnableSpringDataWebSupport
 public class WebConfigurer implements ServletContextInitializer {
 
     private final Logger log = LoggerFactory.getLogger(WebConfigurer.class);
@@ -40,7 +39,7 @@ public class WebConfigurer implements ServletContextInitializer {
     }
    
     /**
-     * Initializes the GZip filter.
+     * Initializes the cross-size filter
      */
     private void initCrossoriginFilter(ServletContext servletContext, EnumSet<DispatcherType> disps) {
         log.debug("Registering GZip Filter");
