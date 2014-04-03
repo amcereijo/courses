@@ -9,9 +9,12 @@
 		<table class="table table-hover table-bordered">
 		  <thead>
 		    <tr class="trHeader">
-		      <th ng-click="setOrder('title')">Título {{ orderProperty=='title' | showOrderBy:orderbyASC}}</th>
-		      <th ng-click="setOrder('level')">Nivel {{ orderProperty=='level' | showOrderBy:orderbyASC}}</th>
-		      <th ng-click="setOrder('hours')">Horas {{ orderProperty=='hours' | showOrderBy:orderbyASC}}</th>
+		      <th ng-click="setOrder('title')">Título 
+		      	<span class="{{ orderProperty=='title' | showOrderBy:orderbyASC}}"/></th>
+		      <th ng-click="setOrder('level.name')">Nivel 
+		      	<span class="{{ orderProperty=='level.name' | showOrderBy:orderbyASC}}"/></th>
+		      <th ng-click="setOrder('hours')">Horas 
+		      	<span class="{{ orderProperty=='hours' | showOrderBy:orderbyASC}}"/></th>
 		    </tr>
 		  </thead>
 		  <tbody>

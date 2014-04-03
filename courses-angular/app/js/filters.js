@@ -17,9 +17,9 @@ angular.module('courses.filters', []).
   .filter('showOrderBy', function() {
     return function(expresion, orderbyASC) {
     	if(expresion && orderbyASC){
-    		return '∧';
+    		return  'glyphicon glyphicon-sort-by-attributes-alt';
     	} else if(expresion && !orderbyASC){
-    		return '∨';
+    		return 'glyphicon glyphicon-sort-by-attributes';
     	} else {
     		return '';
     	}
