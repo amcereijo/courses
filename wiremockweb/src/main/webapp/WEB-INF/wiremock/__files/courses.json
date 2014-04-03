@@ -1,0 +1,11 @@
+[
+	{"id":1,"title":"My first course","level":{"id":1,"name":"Básico"},
+		"hours":10,"active":false,"teacher":{"id":1,"name":"Básico"}
+	},
+	{"id":2,"title":"Never ending course","level":{"id":2,"name":"Básico"},
+		"hours":25,"active":false,"teacher":{"id":2,"name":"Básico"}
+	},
+	{"id":3,"title":"Expert course","level":{"id":3,"name":"Básico"},
+		"hours":100,"active":false,"teacher":{"id":3,"name":"Básico"}
+	}
+]
