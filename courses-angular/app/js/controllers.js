@@ -12,7 +12,7 @@ coursesControllers.controller('CourseListController',['$scope','$http','$rootSco
     $scope.pageSize = 3;
     
     $scope.courses = [{}];
-    $http({method: 'GET', isArray: true, url: $rootScope.serviceUrl+'/courses'}).
+    $http({method: 'GET', isArray: true, url: $rootScope.serviceUrl+'/courses?active=true'}).
       success(function(data, status, headers, config) {
         $scope.courses = data; 
       }).
