@@ -9,11 +9,13 @@
   	<listener-class>com.github.tomakehurst.wiremock.servlet.WireMockWebContextListener</listener-class>
   </listener>
   
+  <!-- directorio raíz donde dejamos nuestros directorio __files y mappings -->
   <context-param>
   	<param-name>WireMockFileSourceRoot</param-name>
   	<param-value>/WEB-INF/wiremock</param-value>
   </context-param>
   
+  <!-- servlet que procesará nuestras peticiones, ofrecido por wiremock -->
   <servlet>
   	<servlet-name>wiremock-mock-service-handler-servlet</servlet-name>
   	<servlet-class>com.github.tomakehurst.wiremock.servlet.HandlerDispatchingServlet</servlet-class>
@@ -22,11 +24,14 @@
   		<param-value>com.github.tomakehurst.wiremock.http.StubRequestHandler</param-value>
   	</init-param>
   </servlet>
+  
+  <!-- el servlet escuchará todas la urls de la aplicación -->
   <servlet-mapping>
   	<servlet-name>wiremock-mock-service-handler-servlet</servlet-name>
   	<url-pattern>/*</url-pattern>
   </servlet-mapping>
   
+  <!-- servlet especifico para el proceso admin de wiremock -->
   <servlet>
   	<servlet-name>wiremock-admin-handler-servlet</servlet-name>
   	<servlet-class>com.github.tomakehurst.wiremock.servlet.HandlerDispatchingServlet</servlet-class>
@@ -35,6 +40,7 @@
   		<param-value>com.github.tomakehurst.wiremock.http.AdminRequestHandler</param-value>
   	</init-param>
   </servlet>
+  <!-- el mapeo para el servlet de admin -->
   <servlet-mapping>
   	<servlet-name>wiremock-admin-handler-servlet</servlet-name>
   	<url-pattern>/__admin/*</url-pattern>
